@@ -1,18 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        CreditManager creditManager = new CreditManager();
-        creditManager.save();
-        creditManager.save();
-    }
-}
+        Person person = new Person();
+        person.setId(1);
+        person.setFirstName("David");
+        person.setLastName("Brown");
+        person.setNationalIdentity("123123213");
 
-public class CreditManager{
-    public void calculate(){
-        System.out.println("calculated");
-    }
+        Company company = new Company();
+        company.setTaxNumber("232423423");
+        company.setCompanyName("Siemens");
+        company.setId(2);
 
-    public void save(){
-        System.out.println("loan saved");
+//        Customer c1 = new Customer();
+//        Customer c2 = new Person();
+//        Customer c3 = new Company();
+
+        CustomerManager customerManager = new CustomerManager(company, new TeacherCreditManager());
+        customerManager.save();
+        customerManager.giveCredit();
+
+        BaseCreditManager baseCreditManager = new AgriculturalCreditManager();
+
     }
 }
 
